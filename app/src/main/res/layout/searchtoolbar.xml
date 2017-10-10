@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/colorPrimary"
+    android:elevation="4dp"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark"
+    app:contentInsetStart="0dp"
+    app:paddingEnd="0dp"
+    app:paddingStart="0dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+<ImageView
+
+    android:layout_width="wrap_content"
+    android:layout_alignParentLeft="true"
+    android:layout_centerVertical="true"
+    android:padding="10dp"
+    android:id="@+id/search_back"
+    android:src="@mipmap/ic_arrow"
+    android:layout_height="wrap_content" />
+
+
+        <AutoCompleteTextView
+            android:layout_toRightOf="@+id/search_back"
+            android:id="@+id/search_box"
+            android:layout_width="fill_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_gravity="center"
+            android:dropDownVerticalOffset="5dp"
+            android:dropDownWidth="wrap_content"
+            android:inputType="textAutoComplete|textAutoCorrect"
+            android:popupBackground="@android:color/white"
+            android:textColor="#FFFFFF" >
+        </AutoCompleteTextView>
+
+
+
+
+    </RelativeLayout>
+
+</android.support.v7.widget.Toolbar>

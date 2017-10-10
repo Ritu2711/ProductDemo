@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="proj.productgallery.searchcontent.SearchActivity">
+
+
+<include layout="@layout/searchtoolbar"/>
+
+    <LinearLayout
+        android:id="@+id/lc"
+        android:clickable="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/img"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@mipmap/p1" />
+
+        <TextView
+            android:id="@+id/toolbar_ivNavigation"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center|start"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/selector_view"
+            android:padding="10dp"
+            android:text="Search result" />
+    </LinearLayout>
+
+</LinearLayout>
