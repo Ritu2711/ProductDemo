@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-
 <android.support.design.widget.CoordinatorLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
-android:id="@+id/coordinate"
+    xmlns:fab="http://schemas.android.com/tools"
+    android:id="@+id/coordinate"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <ImageView
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             android:layout_gravity="end"
-            android:layout_width="35dp"
+            android:layout_width="25dp"
             android:id="@+id/gridlayout"
             android:visibility="gone"
 
             android:src="@drawable/grid"
-            android:layout_height="35dp" />
+            android:layout_height="30dp" />
         <ImageView
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             android:layout_gravity="end"
-            android:layout_width="35dp"
+            android:layout_width="25dp"
             android:id="@+id/listlayout"
             android:src="@drawable/list"
-            android:layout_height="35dp" />
+            android:layout_height="30dp" />
 
         <android.support.v7.widget.RecyclerView
             xmlns:android="http://schemas.android.com/apk/res/android"
@@ -37,8 +37,9 @@ android:id="@+id/coordinate"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-    </LinearLayout>
 
+
+    </LinearLayout>
 
     <RelativeLayout
         android:id="@+id/hide"
@@ -63,14 +64,52 @@ android:id="@+id/coordinate"
     </RelativeLayout>
 
 
-    <android.support.design.widget.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="20dp"
-        app:fabSize="mini"
-        app:backgroundTint="@color/colorPrimary"
+
+    <proj.productgallery.wishlist.FloatingActionMenu
         android:id="@+id/fabshare"
-        android:visibility="gone"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/ic_share"/>
+android:padding="2dp"
+        app:backgroundTint="#03A9F4"
+fab:backgroundTint="#03A9F4"
+
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="16dp"
+        android:layout_gravity="end"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <!--First button as menu button-->
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_main_circle"
+            android:padding="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_add"
+            fab:fabSize="mini
+"
+            fab:backgroundTint="#03A9F4"/>
+
+        <!-- Other button as menu items-->
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_random_circle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_share"
+            fab:fabSize="mini"
+            app:backgroundTint="#03A9F4"
+            fab:backgroundTint="#03A9F4" />
+        <!-- Other button as menu items-->
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_random_circle2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_request"
+            fab:fabSize="mini"
+            app:backgroundTint="#03A9F4"
+            fab:backgroundTint="@color/colorPrimary" />
+        <!-- Other button as menu items-->
+
+
+
+    </proj.productgallery.wishlist.FloatingActionMenu>
 </android.support.design.widget.CoordinatorLayout>

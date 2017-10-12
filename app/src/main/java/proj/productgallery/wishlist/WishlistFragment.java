@@ -51,7 +51,7 @@ public class WishlistFragment extends Fragment {
     private String[] TITLeGgrid2 = {"PRODUCT 4", "PRODUCT 5", "PRODUCT 6"};
     private String[] DIscriptiongrid2 = {"Straight Razor Olive Wood Set", "Ustraa Shaving Mug", "Ustraa Travel Kit"};
     private String[] Dategrid2 = {"Explore Now!","Grab Now!","Discover now!"};
-FloatingActionButton fabshare;
+    FloatingActionMenu menu;
     ImageView gridlayout,listlayout;
     String data="";
     public WishlistFragment() {
@@ -68,38 +68,56 @@ CoordinatorLayout coordinate;
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v=inflater.inflate(R.layout.fragment_wishlist, container, false);
-        fabshare=v.findViewById(R.id.fabshare);
         RelativeLayout rel=v.findViewById(R.id.hide);
         coordinate=v.findViewById(R.id.coordinate);
         mContext = getActivity();
         data=getArguments().getString("data");
         gridlayout=v.findViewById(R.id.gridlayout);
         listlayout=v.findViewById(R.id.listlayout);
-       /* Toast.makeText(mContext, "df"+data, Toast.LENGTH_SHORT).show();*/
-        fabshare.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar bar = Snackbar.make(coordinate, "Share your list", Snackbar.LENGTH_LONG)
-                        .setAction("Click here", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                // Handle user action
-                                Intent intent = new Intent(Intent.ACTION_SEND);
-                                intent.setType("text/plain");
-                                intent.putExtra(Intent.EXTRA_TEXT, "http://66.201.99.67/~producdemo/dist/#!/dashboard/");
-                                intent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Check out this site!");
-                                startActivity(Intent.createChooser(intent, "Share"));
-                            }
-                        });
+   menu= (FloatingActionMenu) v.findViewById(R.id.fabshare);
+        //menu.setMultipleOfFB(3.2f);
+        menu.setMultipleOfFB(1.5f);
 
-                bar.show();
+
+        menu.setIsCircle(true);
+        menu.setOnMenuItemClickListener(new FloatingActionMenu.OnMenuItemClickListener() {
+            @Override
+            public void onMenuItemClick(FloatingActionMenu fam, int index, FloatingActionButton item) {
+                String str = "";
+                switch (index) {
+                    case 0:
+                        str = "Share List";
+                        Snackbar bar = Snackbar.make(coordinate, "Share your list", Snackbar.LENGTH_LONG)
+                                .setAction("Click here", new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        // Handle user action
+                                        Intent intent = new Intent(Intent.ACTION_SEND);
+                                        intent.setType("text/plain");
+                                        intent.putExtra(Intent.EXTRA_TEXT, "http://66.201.99.67/~producdemo/dist/#!/dashboard/");
+                                        intent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Check out this site!");
+                                        startActivity(Intent.createChooser(intent, "Share"));
+                                    }
+                                });
+
+                        bar.show();
+                        break;
+                    case 1:
+                        str="Request Quotes";
+                        break;
+
+                    default:
+                }
+                Toast.makeText(getActivity().getApplicationContext(), str, Toast.LENGTH_SHORT).show();
             }
         });
+       /* Toast.makeText(mContext, "df"+data, Toast.LENGTH_SHORT).show();*/
+
         if (data!=null && !data.isEmpty()){
             if (data.equalsIgnoreCase("LIST 1")){
 
                 rel.setVisibility(View.GONE);
-                fabshare.setVisibility(View.VISIBLE);
+                menu.setVisibility(View.VISIBLE);
 
                 for (int i= 0; i< IMAGEgrid.length; i++) {
 
@@ -112,7 +130,7 @@ CoordinatorLayout coordinate;
 
             if (data.equalsIgnoreCase("LIST 2")){
                 rel.setVisibility(View.GONE);
-                fabshare.setVisibility(View.VISIBLE);
+                menu.setVisibility(View.VISIBLE);
 
                 for (int i= 0; i< IMAGEgrid2.length; i++) {
 
@@ -124,12 +142,12 @@ CoordinatorLayout coordinate;
             }
             if (data.equalsIgnoreCase("LIST 3")){
                 rel.setVisibility(View.VISIBLE);
-                fabshare.setVisibility(View.GONE);
+                menu.setVisibility(View.GONE);
 
             }
             if (data.equalsIgnoreCase("LIST 4")){
                 rel.setVisibility(View.VISIBLE);
-                fabshare.setVisibility(View.GONE);
+                menu.setVisibility(View.GONE);
 
             }
         }
