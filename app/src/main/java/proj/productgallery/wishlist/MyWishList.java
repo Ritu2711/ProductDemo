@@ -51,7 +51,6 @@ public class MyWishList extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v=inflater.inflate(R.layout.activity_my_wish_list, container, false);
-
         for (int i= 0; i< IMAGEgrid.length; i++) {
 
             Beanclass beanclass = new Beanclass(IMAGEgrid[i], TITLeGgrid[i], DIscriptiongrid[i], Dategrid[i]);
@@ -68,6 +67,7 @@ public class MyWishList extends Fragment {
         recyclerView.setAdapter(new SimpleStringRecyclerViewAdapter(recyclerView, arrayList,getActivity()));
         Bundle args=new Bundle();
         args.putString("data","LIST 2");
+
 
         WishlistFragment productFragment=new WishlistFragment();
         productFragment.setArguments(args);

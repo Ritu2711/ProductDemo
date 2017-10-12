@@ -20,13 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <ImageButton
-            android:background="@android:color/transparent"
-            android:src="@mipmap/ic_add"
-            android:id="@+id/btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
+
         <EditText
             android:id="@+id/editText"
             android:padding="15dp"

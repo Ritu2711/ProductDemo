@@ -61,6 +61,27 @@ android:textStyle="bold"
             android:layout_gravity="center"
             android:layout_height="2dp"
             ></View>
+            <Button
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:background="@color/colorPrimary"
+                android:text="REQUEST QUOTE"
+                android:textColor="@android:color/white"
+                android:layout_height="wrap_content" />
+            <Button
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:background="@color/colorPrimary"
+                android:text="REQUEST INFO"
+                android:textColor="@android:color/white"
+                android:layout_height="wrap_content" />
+            <Button
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:background="@color/colorPrimary"
+                android:text="REQUEST CATALOGUES"
+                android:textColor="@android:color/white"
+                android:layout_height="wrap_content" />
 
             <RadioGroup
                 android:id="@+id/radioGroup1"
@@ -112,6 +133,7 @@ android:textStyle="bold"
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+                <include layout="@layout/riewviewlayout"/>
 
                 <android.support.v7.widget.RecyclerView
                     android:layout_width="match_parent"

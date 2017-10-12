@@ -46,13 +46,13 @@ public class WishlistFragment extends Fragment {
     private String[] DIscriptiongrid = {"Straight Razor Olive Wood Set", "Ustraa Shaving Mug", "Ustraa Travel Kit","Aftersave"};
     private String[] Dategrid = {"Explore Now!","Grab Now!","Discover now!", "Great Savings!"};
 
-
+    RecyclerView.LayoutManager recylerViewLayoutManager;
     private int[] IMAGEgrid2 = {R.mipmap.p1, R.mipmap.p1, R.mipmap.p1};
     private String[] TITLeGgrid2 = {"PRODUCT 4", "PRODUCT 5", "PRODUCT 6"};
     private String[] DIscriptiongrid2 = {"Straight Razor Olive Wood Set", "Ustraa Shaving Mug", "Ustraa Travel Kit"};
     private String[] Dategrid2 = {"Explore Now!","Grab Now!","Discover now!"};
 FloatingActionButton fabshare;
-
+    ImageView gridlayout,listlayout;
     String data="";
     public WishlistFragment() {
         // Required empty public constructor
@@ -73,7 +73,8 @@ CoordinatorLayout coordinate;
         coordinate=v.findViewById(R.id.coordinate);
         mContext = getActivity();
         data=getArguments().getString("data");
-
+        gridlayout=v.findViewById(R.id.gridlayout);
+        listlayout=v.findViewById(R.id.listlayout);
        /* Toast.makeText(mContext, "df"+data, Toast.LENGTH_SHORT).show();*/
         fabshare.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,6 +84,11 @@ CoordinatorLayout coordinate;
                             @Override
                             public void onClick(View v) {
                                 // Handle user action
+                                Intent intent = new Intent(Intent.ACTION_SEND);
+                                intent.setType("text/plain");
+                                intent.putExtra(Intent.EXTRA_TEXT, "http://66.201.99.67/~producdemo/dist/#!/dashboard/");
+                                intent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Check out this site!");
+                                startActivity(Intent.createChooser(intent, "Share"));
                             }
                         });
 
@@ -129,11 +135,41 @@ CoordinatorLayout coordinate;
         }
 
 
-        RecyclerView recyclerView = (RecyclerView)v.findViewById(R.id.recyclerview);
-        RecyclerView.LayoutManager recylerViewLayoutManager = new GridLayoutManager(mContext,2);
+        final RecyclerView recyclerView = (RecyclerView)v.findViewById(R.id.recyclerview);
+        recylerViewLayoutManager = new GridLayoutManager(mContext,2);
 
         recyclerView.setLayoutManager(recylerViewLayoutManager);
         recyclerView.setAdapter(new SimpleStringRecyclerViewAdapter(recyclerView, arrayList));
+        gridlayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                recylerViewLayoutManager = new GridLayoutManager(getActivity(),2);
+
+                recyclerView.setLayoutManager(recylerViewLayoutManager);
+                listlayout.setVisibility(View.VISIBLE);
+                gridlayout.setVisibility(View.GONE);
+
+
+
+
+            }
+        });
+
+        listlayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                 recylerViewLayoutManager = new LinearLayoutManager(getActivity());
+
+                recyclerView.setLayoutManager(recylerViewLayoutManager);
+
+                gridlayout.setVisibility(View.VISIBLE);
+                listlayout.setVisibility(View.GONE);
+
+
+            }
+        });
+
+
         return v;
     }
 
@@ -212,7 +248,7 @@ CoordinatorLayout coordinate;
                     final EditText userInputDialogEditText = (EditText) mView.findViewById(R.id.userInputDialog);
                     alertDialogBuilderUserInput
                             .setCancelable(false)
-                            .setPositiveButton("Send", new DialogInterface.OnClickListener() {
+                            .setPositiveButton("SAVE", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialogBox, int id) {
                                     // ToDo get user input here
                                 }

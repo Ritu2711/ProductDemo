@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,20 +35,27 @@ public class DialogWish extends AppCompatActivity {
 
         listdata = (ListView) findViewById(R.id.listdata);
         editText = (EditText) findViewById(R.id.editText);
-        btn = (ImageButton) findViewById(R.id.btn);
-        btn.setOnClickListener(new View.OnClickListener() {
+
+        editText.setOnKeyListener(new View.OnKeyListener() {
             @Override
-            public void onClick(View view) {
-                if (editText.getText().toString()!=null && !editText.getText().toString().isEmpty()) {
-                    Data data = new Data(editText.getText().toString(), false);
-                    arrayList.add(data);
-                    MyCustomAdapter dataAdapter = new MyCustomAdapter(DialogWish.this,
-                            R.layout.row, arrayList);
-                    listdata.setAdapter(dataAdapter);
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+
+
+                if (((keyEvent.getAction()==KeyEvent.ACTION_DOWN)) && (i==KeyEvent.KEYCODE_ENTER)){
+                    if (editText.getText().toString()!=null && !editText.getText().toString().isEmpty()) {
+                        Data data = new Data(editText.getText().toString(), false);
+                        arrayList.add(data);
+                        MyCustomAdapter dataAdapter = new MyCustomAdapter(DialogWish.this,
+                                R.layout.row, arrayList);
+                        listdata.setAdapter(dataAdapter);
+                        editText.setText("");
+                        editText.setSingleLine(true);
+
+                    }
                 }
+                return false;
             }
         });
-
 
 
     }

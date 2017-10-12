@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
@@ -22,7 +23,6 @@ import proj.productgallery.wishlist.WishlistFragment;
  * Created by apple on 18/03/16.
  */
 public class TabFragment1 extends Fragment {
-FloatingActionButton fab_filter;
 
     private ExpandableHeightGridView gridview;
     private ArrayList<Beanclass> beanclassArrayList;
@@ -44,20 +44,13 @@ FloatingActionButton fab_filter;
         view = inflater.inflate(R.layout.fragmenttab1, container, false);
 
         gridview = (ExpandableHeightGridView)view.findViewById(R.id.gridview);
-        fab_filter = (FloatingActionButton) view.findViewById(R.id.fab_filter);
         recyclerView = (RecyclerView)view.findViewById(R.id.newRecycle);
-        GetSet g1=new GetSet(R.mipmap.p1,"Bedroom furniture");
-        GetSet g2=new GetSet(R.mipmap.product,"living Room Furniture");
-        GetSet g3=new GetSet(R.mipmap.product,"Modular Kitchen Furniture");
+        GetSet g1=new GetSet(R.mipmap.sofa,"BedRoom  Furniture");
+        GetSet g2=new GetSet(R.mipmap.product,"LivingRoom Furniture");
+        GetSet g3=new GetSet(R.mipmap.sofa2,"Modular Kitchen Furniture");
         GetSet g4=new GetSet(R.mipmap.p1,"Home Office Furniture");
         GetSet g5=new GetSet(R.mipmap.p1,"Outdoor Kids Furniture");
-        fab_filter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(getActivity(), FilterActivity.class);
-                startActivity(intent);
-            }
-        });
+
 
         al.add(g1);
         al.add(g2);
@@ -72,7 +65,7 @@ FloatingActionButton fab_filter;
                 ItemDetailsFragment itemDetailsFragment=new ItemDetailsFragment();
                 getActivity().getSupportFragmentManager()
                         .beginTransaction()
-                        .addToBackStack("tag")
+                        .addToBackStack("ItemDetails")
                         .replace(R.id.flContainerFragment, itemDetailsFragment)
                         .commit();
             }

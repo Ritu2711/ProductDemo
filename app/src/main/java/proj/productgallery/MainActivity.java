@@ -8,16 +8,25 @@ import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -66,18 +75,19 @@ public class MainActivity extends AppCompatActivity {
         setToolbarTitle(getString(R.string.title_navigation_activity));
         toolbar.setNavigationIcon(null);
         setSupportActionBar(toolbar);
-
+/*
         search_ahead =toolbar.findViewById(R.id.search_ahead);
 
         search_ahead.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this, SearchActivity.class);
+
+               *//* Intent intent=new Intent(MainActivity.this, SearchActivity.class);
                 startActivity(intent);
                 overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
-                finish();
+                finish();*//*
             }
-        });
+        });*/
 
         drawer = (DrawerLayout) findViewById(R.id.drawerLayout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -88,6 +98,55 @@ public class MainActivity extends AppCompatActivity {
         replaceFragment(0);
         replaceNavigationFragment();
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.searchmenu,menu);
+        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.searchedt));
+
+        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+                toolbar_ivNavigation.setVisibility(View.VISIBLE);
+                tvTitle.setVisibility(View.VISIBLE);
+                return false;
+            }
+        });
+
+
+        searchView.setQueryHint("Search Products....");
+        searchView.setLayoutParams(new ActionBar.LayoutParams(Gravity.RIGHT));
+
+        searchView.setOnSearchClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toolbar_ivNavigation.setVisibility(View.GONE);
+                tvTitle.setVisibility(View.GONE);
+            }
+        });
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                searchView.clearFocus();
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                newText=newText.toLowerCase();
+
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        return super.onOptionsItemSelected(item);
+    }
+
     private void setToolbarTitle() {
         String activityTitles []= getResources().getStringArray(R.array.array_navigation);
 
@@ -107,15 +166,16 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+        Log.d("dasddfta",""+getFragmentManager().getBackStackEntryCount());
 
-        if (getFragmentManager().getBackStackEntryCount() > 0) {
-            Log.d("dasddfta",""+getFragmentManager().getBackStackEntryCount());
+       /* if (getFragmentManager().getBackStackEntryCount() > 0) {
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(String.valueOf(navItemIndex));
             if (fragment instanceof CategoryFragment) {
                 setToolbarTitle(activityTitles[navItemIndex]);
                 FragmentManager childFm = fragment.getChildFragmentManager();
                 if (childFm.getBackStackEntryCount() > 0) {
                     // update the main content by replacing
+
 
                 }
                 // add your code to change title of toolbar
@@ -132,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
                 setToolbarTitle(activityTitles[navItemIndex]);
                 // add your code to change title of toolbar
             }
-        } else {
+        } else {*/
             Toast.makeText(this, "done", Toast.LENGTH_SHORT).show();
             Handler mHandler =new Handler();
             Runnable mPendingRunnable = new Runnable() {
@@ -160,7 +220,7 @@ public class MainActivity extends AppCompatActivity {
 
 
             super.onBackPressed();
-        }
+
     }
 
 

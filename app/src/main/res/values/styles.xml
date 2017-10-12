@@ -41,6 +41,47 @@
 </style>
     <!-- App theme for pre-lollipop devices -->
     <style name="MaterialTheme" parent="MaterialThemeSupportBase"/>
+    <style name="aboutwrapper">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="about_sub_wrapper">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">20dp</item>
+    </style>
+    <style name="about_image">
+        <item name="android:layout_width">200dp</item>
+        <item name="android:layout_height">200dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginBottom">30dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+    </style>
+    <style name="about_description" parent="@android:style/TextAppearance">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">@string/about_page_description</item>
+        <item name="android:lineSpacingExtra">8dp</item>
+        <item name="android:layout_marginBottom">20dp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+    <style name="about_separator">
+        <item name="android:layout_height">2dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:layout_marginBottom">0dp</item>
+    </style>
+
 
     <!-- Base application theme. -->
     <style name="MaterialThemeSupportBase" parent="Theme.AppCompat.Light">
@@ -133,4 +174,5 @@
     <!-- -->
 
     <color name="colorPrimaryLight">#b4b4b4</color>
+    <string name="about_page_description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
 </resources>

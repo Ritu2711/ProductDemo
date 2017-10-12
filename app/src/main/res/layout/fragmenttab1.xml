@@ -20,6 +20,7 @@
             >
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/newRecycle"
+                android:background="@color/background_grey"
                 android:requiresFadingEdge="horizontal"
                 android:scrollbars="horizontal"
                 android:scrollbarStyle="insideOverlay"
@@ -45,16 +46,6 @@
 
     </ScrollView>
 
-    <android.support.design.widget.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/ic_filter"
-app:backgroundTint="@color/colorPrimary"
-        android:layout_marginRight="5dp"
-        android:id="@+id/fab_filter"
-        android:layout_marginBottom="20dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"/>
 
 
 
